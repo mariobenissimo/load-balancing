@@ -1,0 +1,38 @@
+version: '3.3'
+services:
+
+  #-------------------------------#
+  # 🖥️ Prometheus                  #
+  #-------------------------------#
+
+  prometheus:
+    image: prom/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: always
+    volumes:
+        - ../Prometheus/prometheus:/etc/prometheus
+    networks:
+      - test-network
+    ports:
+      - 9090:9090
+
+  #-------------------------------#
+  # 🖥️ Server                     #
+  #-------------------------------#
+  server:
+    container_name: server
+    build:
+      context: ../server
+      dockerfile: Dockerfile   
+    ports:
+      - "9000:9000"
+    networks:
+      - test-network
+    restart: always
+
+  
+networks:
+  test-network:
+    name: test-network
+    driver: bridge 
