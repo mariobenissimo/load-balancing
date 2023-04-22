@@ -7,28 +7,30 @@ Questo progetto ha lo scopo di mostrare come utilizzare il load balancing con Ng
 # Struttura del Progetto
 Il progetto è suddiviso in due cartelle:
 
-single-server: contiene un singolo server che non utilizza il load balancing con Nginx.
-mult-server: contiene più server che utilizzano il load balancing con Nginx.
+1. single-server: contiene un singolo server che non utilizza il load balancing con Nginx.
+2. mult-server: contiene più server che utilizzano il load balancing con Nginx.
 
-Utilizzo
+## Utilizzo
 Per eseguire il progetto, clonare il repository e posizionarsi nella cartella del progetto:
 
-bash
-Copy code
+```bash
 git clone https://github.com/mariobenissimo/docker-nginx-prometheus-load-balancer.git
 cd docker-nginx-prometheus-load-balancer
+```
+
 Per eseguire il singolo server senza load balancing, entrare nella cartella server ed eseguire il comando:
 
-bash
-Copy code
+```bash
 cd single-server
 docker-compose up
+```
+
 Per eseguire il load balancing con Nginx, entrare nella cartella load-balanced-server ed eseguire il comando:
 
-bash
-Copy code
+```bash
 cd mult-server
 docker-compose up
+```
 In entrambi i casi, Docker Compose creerà i container necessari e li avvierà.
 
 Per accedere alle metriche raccolte da Prometheus, aprire un browser e digitare l'indirizzo http://localhost:9090.
